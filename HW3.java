@@ -26,11 +26,11 @@ public class HW3 {
 		//Constructor (5 points)
 		//printCard (5 points)
 		//getSuit (5 points)
-		Card newCard=deck.getOneCard();
+		Card newCard=Deck.getOneCard();
 		newCard.printCard();
-		Card newCard2=deck.getOneCard();
+		Card newCard2=Deck.getOneCard();
 		newCard2.printCard();
-		deck.shuffle();
+		Deck.shuffle();
 		if(isAllCardsCorrect(deck.getAllCards(),nDeck)){
 			if(!isShuffleWorking(deck,newCard,newCard2)){
 				System.out.println("All Card: Well done! But shufller is not working");
