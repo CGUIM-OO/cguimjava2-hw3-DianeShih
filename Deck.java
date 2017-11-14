@@ -44,13 +44,13 @@ public class Deck {
 			public static int j=1;
 			public static Card getOneCard(){
 				
-				
-				Card card1=new Card(cards.get(j).getSuit(),cards.get(j).getRank());//
+				//發牌
+				Card card1=new Card(cards.get(j).getSuit(),cards.get(j).getRank());//做一個object card1從cards裡拿出一張卡，並且有他的花色跟點數
 				//usedCard.add(cards.get(j));
-				usedCard.add(card1);//再將usedCard
-				nUsed=nUsed+1;
+				usedCard.add(card1);//再將card1放進usedCard裡
+				nUsed=nUsed+1;//每做一次這個動做就要加一次發牌數(nUsed)
 				
-				if(nUsed==52)
+				if(nUsed==52)//當牌要發完時(就是發牌數已到52張)，就會再去洗牌
 				{
 					shuffle();
 				}

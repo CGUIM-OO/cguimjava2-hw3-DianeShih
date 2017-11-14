@@ -1,9 +1,9 @@
 
 
 public class Card {
-	 enum Suit{Club, Diamond, Heart, Spade};
+	 enum Suit{Club, Diamond, Heart, Spade};//將花色變成enum存取，並取名為Suit
 	   
-	    Suit c1;
+	    Suit c1;//改Suit的名字為c1
 		private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4 if I need to definition the suit and rank  String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
 		  //String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
@@ -16,10 +16,9 @@ public class Card {
 			c1=s;
 			rank=value;
 		}	
-		//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
+		
 		public void printCard(){
-			//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-			if(getSuit().equals("Club"))
+			if(getSuit().equals("Club"))//改用equal來表示當getsuit的位置為Club時，則會與Suit.Club的位置相同
 				System.out.print(Suit.Club);
 			if(getSuit().equals("Diamond"))
 					System.out.print(Suit.Diamond);
@@ -75,7 +74,7 @@ public class Card {
 				
 		}
 		public Suit getSuit(){
-			return c1;
+			return c1; //已將 getSuit()的屬性改成Suit了
 		}
 		public int getRank(){
 			return rank;
