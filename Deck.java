@@ -13,7 +13,7 @@ public class Deck {
 				cards=new ArrayList<Card>();
 				for(int i=1;i<=nDeck;i++)
 				{
-					for(Card.Suit s:Card.Suit.values())//ÒòéCardsÑeµÄ×ƒ”µÊÇ»¨É«ß@‚€²¿·Ö…¢”µĞÔÙ|ÒÑ¸Ä³ÉSuitËùÒÔ£¬ááÀmÒ²Òª½ÓÖø¸Ä
+					for(Card.Suit s:Card.Suit.values())//ç•¶DeckèŠ±è‰²å·²è®Šæˆsuitçš„å‹æ…‹ä¾†å­˜å–,è¿´åœˆCardclassè£¡çš„Suit å‘½æ°‘ç‚ºs=Suitçš„values
 				
 		        {
 		            for(int Y=1; Y<=13;Y++)
@@ -22,21 +22,34 @@ public class Deck {
 		            }
 		        }  
 				}
-				//shuffle();//®”ÅÆ¶¼®aÉú³öí•r£¬ÊÇ°´ÕÕí˜ĞòµÄ£¬ËùÒÔÒªÏ´ÅÆ
+				shuffle();//é€™æ˜¯ç¬¬ä¸€æ¬¡æ‹¿åˆ°å®Œå…¨æŒ‰ç…§é †åºåœ°ç‰Œè¦å…ˆæ´—ç‰Œï¼Œæ‰€ä»¥å‘¼å«æ´—ç‰Œçš„æ–¹æ³•
+			
 				
 
 			}	
-			private static ArrayList<Card>usedCard;//ß@ÑeÊÇ´æÒÑ½›°l³öÈ¥µÄÄÇĞ©ÅÅ
-			public static int nUsed;//´æ°l³öÈ¥µÄÅÅ”µ
+			private static ArrayList<Card>usedCard;//æ–¹æ³•é™£åˆ—çš„usedcard
+			public static int nUsed;//æ–¹æ³•nused
 			public static void shuffle(){
+				//å¯¸å–æ´—ç‰Œæ™‚æŠŠä¸€å¼µç‰Œæ‹¿å‡ºä¾†æ”¾åˆ°æ—é‚Šå»
+				if(usedCard.size() != 0)//ç•¶ç™¼å‡ºå»çš„ç‰Œ(usedCard)é€™å€‹arraylistçš„é•·åº¦ä¸ç­‰æ–¼é›¶æ™‚
+				{
+					for(Card card : usedCard)//è¿´åœˆç™¼å‡ºå»çš„æ’ç­‰åŒæ–¼card
+					{
+						cards.add(card);//cardsæ˜¯åŸæœ¬é‚£ä¸€çµ„é‹ªå…‹ç‰Œå†åŠ ä¸Šä»¥ç™¼å‡ºå»çš„æ’(card)
+					}
+					usedCard.clear();
+					nUsed = 0;//
+				}
+				//å­˜å–æ´—ç‰Œæ™‚éš¨ä¾¿æŠ½ä¸€å¼µç‰Œå°‡ç‰ æ”¾åˆ°ç¬¬ä¸€å¼µç‰Œå»
 				int i;
 				Random rand=new Random();
-				 for(i=1;i<=52;i++)
+				 for(i=0;i<=52;i++)//é™£åˆ—å¾ä¸€é–‹å§‹æ‰€ä»¥iè¦å¾0é–‹å§‹è¦ä¸ç„¶æœƒå°‘ä¸€å¼µç‰Œ
 					 {
 					 
-					 i = rand.nextInt(53);
-					 cards.add(cards.get(i));//ÀûÓÃy”µíëS±ãÈ¡³öCardsµÄÒ»ˆÅÆ£¬È»ááÔÙaddßMcardsÑe
-					 cards.remove(cards.get(i));//Òòé´Ë•r•şÓĞ52+1ˆÅÆËùÒÔÒªremove³öÈ¥
+					 int j = rand.nextInt(53);
+					Card tea=cards.get(j);
+					 cards.set(j,cards.get(i));//setåœ¨éš¨æ©Ÿå–å‡ºçš„ä¸€å¼µç‰Œjï¼Œæ’å…¥ç¬¬iå¼µç‰Œ
+					 cards.set(i,tea);//setå°‡ç¬¬iå¼µç‰Œæ”¾é€²teaè£¡
 					 }
 				 
 				
@@ -44,20 +57,25 @@ public class Deck {
 			public static int j=1;
 			public static Card getOneCard(){
 				
-				//°lÅÆ
-				Card card1=new Card(cards.get(j).getSuit(),cards.get(j).getRank());//×öÒ»‚€object card1ÄcardsÑeÄÃ³öÒ»ˆ¿¨£¬KÇÒÓĞËûµÄ»¨É«¸úüc”µ
-				//usedCard.add(cards.get(j));
-				usedCard.add(card1);//ÔÙŒ¢card1·ÅßMusedCardÑe
-				nUsed=nUsed+1;//Ã¿×öÒ»´Îß@‚€„Ó×ö¾ÍÒª¼ÓÒ»´Î°lÅÆ”µ(nUsed)
+			
+				/*Card card1=new Card(cards.get(j).getSuit(),cards.get(j).getRank());
+				usedCard.add(cards.get(j));*/
+	
 				
-				if(nUsed==52)//®”ÅÆÒª°lÍê•r(¾ÍÊÇ°lÅÆ”µÒÑµ½52ˆ)£¬¾Í•şÔÙÈ¥Ï´ÅÆ
+				Card card1 = cards.get(0);//card1æ˜¯å¾cardså–å‡ºçš„é™£åˆ—ç¬¬0ç‰Œ
+				
+				usedCard.add(card1);// å°‡cards1åœ°ç‰Œæ”¾é€²usedcardè£¡
+				nUsed = nUsed + 1;// æ¯æ”¾ä¸€æ¬¡nç‰Œæ•¸usedé³©è¦åŠ ä¸€
+				
+				cards.remove(card1);
+
+				if (nUsed == 52)// 
 				{
 					shuffle();
 				}
-				j=j+1;
-				//return cards.get(nUsed);
-				return card1;
 				
+				return card1;
+
 			}
 			
 			

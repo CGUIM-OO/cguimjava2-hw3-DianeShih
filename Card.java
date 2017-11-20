@@ -1,9 +1,9 @@
 
 
 public class Card {
-	 enum Suit{Club, Diamond, Heart, Spade};//Œ¢»¨É«×ƒ³Éenum´æÈ¡£¬KÈ¡ÃûéSuit
+	 enum Suit{Club, Diamond, Heart, Spade};//å°‡èŠ±è‰²æ”¾åœ¨enumè£¡ä¾†å­˜å–ï¼Œå…¶è³‡æ–™å‹æ…‹å–åç‚ºç‚ºSuit
 	   
-	    Suit c1;//¸ÄSuitµÄÃû×Öéc1
+	    Suit c1;//æ­¤enumå–ä¸€å€‹åç‚ºc1
 		private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4 if I need to definition the suit and rank  String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
 		  //String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
@@ -18,33 +18,16 @@ public class Card {
 		}	
 		
 		public void printCard(){
-			if(getSuit().equals("Club"))//¸ÄÓÃequalí±íÊ¾®”getsuitµÄÎ»ÖÃéClub•r£¬„t•şÅcSuit.ClubµÄÎ»ÖÃÏàÍ¬
-				System.out.print(Suit.Club);
+			/*if(getSuit().equals("Club"))
+			System.out.print(Suit.Club);
 			if(getSuit().equals("Diamond"))
 					System.out.print(Suit.Diamond);
 			if(getSuit().equals("Heart"))
 					System.out.print(Suit.Heart);
 			if(getSuit().equals("Spade"))
-					System.out.print(Suit.Spade);
+					System.out.print(Suit.Spade);*/
 				
-			
-			/*char a=(char)getSuit();
-			
-			switch(a)
-			{
-			case'1':
-			System.out.println("Clubs");
-				break;
-			case '2':
-			System.out.println("Diamonds");
-				break;
-			case '3':
-				System.out.println("Hearts");	
-				break;
-			case '4':
-				System.out.println("Spades");
-				break;
-			}*/
+			System.out.println(getSuit());//åŸæ„ç‚ºç•¶getSuitç‚ºclubæ™‚ï¼Œå‰‡é¡¯ç¤ºå‡ºSuitè£¡çš„Clubï¼Œä½†ç”±æ–¼getSuitèˆ‡printå‡ºä¾†çš„å€¼ç›¸åŒï¼Œæ‰€ä»¥ç›´æ¥print getSuit å°±å¥½
 			if(getRank()==1)
 			System.out.println("Ace");
 			if(getRank()==2)
@@ -74,7 +57,8 @@ public class Card {
 				
 		}
 		public Suit getSuit(){
-			return c1; //ÒÑŒ¢ getSuit()µÄŒÙĞÔ¸Ä³ÉSuitÁË
+			return c1; //å› ç‚ºgetSuitçš„å‹æ…‹å·²æ”¹æˆenumä¸”è³‡æ–™å‹æ…‹æ˜¯Suitï¼Œæ‰€ä»¥publicçš„éƒ¨åˆ†è¦æ”¹ï¼Œ
+					   //ä¸¦ä¸”å°‡èŠ±è‰²çš„å€¼(getSuit)å›å‚³åˆ°c1æ
 		}
 		public int getRank(){
 			return rank;
